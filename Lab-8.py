@@ -19,6 +19,13 @@ class Simple_draw_window(QWidget):
         p.drawPolygon([
             QPoint(70, 100) , QPoint(100, 110),
             QPoint(130,100) , QPoint(100, 150),])
+        
+        p.setPen(QColor(0, 0, 0))
+        p.setBrush(QColor(0, 127, 0))
+        p.drawPolygon([
+            QPoint( 50, 50), QPoint(50, 100),
+            QPoint( 100, 50), QPoint(100, 100),
+        ])
 
 def main():
     app = QApplication(sys.argv)
