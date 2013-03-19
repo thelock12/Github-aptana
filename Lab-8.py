@@ -33,5 +33,6 @@ def motion(event):
         yold = event.y
         
 ## kwai
+## eiei
 if __name__ == "__main__":
     main()
