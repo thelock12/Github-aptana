@@ -31,5 +31,7 @@ def motion(event):
             event.widget.create_line(xold,yold,event.x,event.y,smooth=TRUE)
         xold = event.x
         yold = event.y
+        
+## kwai
 if __name__ == "__main__":
     main()
