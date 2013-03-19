@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
+	<name>DFG</name>
+=======
 	<name>Github_aptana</name>
+>>>>>>> 3cbd1bf913f5f37e81d1bad494354210c379d09e
 	<comment></comment>
 	<projects>
 	</projects>
