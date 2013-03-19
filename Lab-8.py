@@ -1,39 +1,35 @@
-'''
-Created on Mar 19, 2013
-
-@author: rittz
-'''
+import sys, random
 import sys
+import time
 from PySide.QtCore import *
 from PySide.QtGui import *
+from PySide.QtUiTools import *
+from Tkinter import *
 
-class Simple_draw_window(QWidget):
-    def __init__(self):
-        QWidget.__init__(self, None)
-        self.setWindowTitle("Simple Drawing")
-        
-    def paintEvent(self, e):
-        p = QPainter()
-        p.begin(self)
-        
-        p.drawPolygon([
-            QPoint(70, 100) , QPoint(100, 110),
-            QPoint(130,100) , QPoint(100, 150),])
-        
-        p.setPen(QColor(0, 0, 0))
-        p.setBrush(QColor(0, 127, 0))
-        p.drawPolygon([
-            QPoint( 50, 50), QPoint(50, 100),
-            QPoint( 100, 50), QPoint(100, 100),
-        ])
-
+b1 = "up"
+xold, yold = None, None
 def main():
-    app = QApplication(sys.argv)
-
-    w = Simple_draw_window()
-    w.show()
-
-    return app.exec_()
-
+    root = Tk()
+    drawing_area = Canvas(root)
+    drawing_area.pack()
+    drawing_area.bind("<Motion>", motion)
+    drawing_area.bind("<ButtonPress-1>", b1down)
+    drawing_area.bind("<ButtonRelease-1>", b1up)
+    root.mainloop()
+def b1down(event):
+    global b1
+    b1 = "down" # you only want to draw when the button is down
+def b1up(event):
+    global b1, xold, yold
+    b1 = "up"
+    xold = None # reset the line when you let go of the button
+    yold = None
+def motion(event):
+    if b1 == "down":
+        global xold, yold
+        if xold is not None and yold is not None:
+            event.widget.create_line(xold,yold,event.x,event.y,smooth=TRUE)
+        xold = event.x
+        yold = event.y
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
