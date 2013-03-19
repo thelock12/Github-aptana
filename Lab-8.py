@@ -15,7 +15,7 @@ class Simple_draw_window(QWidget):
     def paintEvent(self, e):
         p = QPainter()
         p.begin(self)
-    
+        
         p.drawPolygon([
             QPoint(70, 100) , QPoint(100, 110),
             QPoint(130,100) , QPoint(100, 150),])
